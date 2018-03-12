@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="cnps_mensuel_report">
+	<t t-call="report.html_container">
+        <t t-set="data_report_margin_top" t-value="12"/>
+        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+        
+         <t t-foreach="docs" t-as="o">
+            <div class="page">
+            	<!-- <style type="text/css">
+					h1  {font-weight:bold;}
+					div#item1 {float: left;width: 50%;}
+					table {
+							border-collapse: collapse; 
+							font-size: 12px;
+							width: 100%;
+						}
+					td {
+							border: 1px solid gray; 
+							font-size: 10px;
+						}
+					td#title_part {
+							font-style: italic;
+						}
+					td#company{
+							font-size: 12px;
+							padding-left: 5px;
+							
+						}
+					
+				</style> -->
+                <!--  <h4>Livre de paie de la période du <span t-field="o.date_from"/> au <span t-field="o.date_to" /></h4> -->
+                 <table id="table1" width="100%" >
+					<tr>
+						<td rowspan="3">Testons pour voir</td>
+					    <td >ENREGISTREMENT</td>
+					    <td >Réf. EN-GDREC-01</td>
+					</tr>
+					<tr>    
+						<td rowspan="2">APPEL DE COTISATION MENSUEL</td>   
+					    <td >Version 3</td>
+					</tr>
+					<tr>    
+					    <td >Page 1/1</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>Code Etablissement</td>
+						<td>Code Activité</td>
+						<td>N° Employeur</td>
+						<td>Période</td>
+						<td>Raison sociale</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>Adresse</td>
+						<td></td>
+						<td>Téléphone</td>
+						<td></td>
+					</tr>
+				</table>
+            </div>
+        </t>
+    
+    </t>
+</template>
+
+
+
+
+
+
+</data>
+</openerp>

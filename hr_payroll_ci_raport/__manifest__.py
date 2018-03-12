@@ -1,0 +1,30 @@
+{
+    "name": "Les Rapports  de paie",
+    "version": "1.0",
+    "depends": ['base','hr',"hr_payroll_ci", 'report_xlsx'],
+    "author": "Jean Jonathan ARRA",
+    "category": "hr",
+    "description": """
+    This module provide :
+    """,
+    "init_xml": [],
+    'update_xml': [
+        "data/report_paperformat.xml",
+        'wizard/HrPayrollView.xml',
+        'wizard/hrPayrollFDFPView.xml',
+        'wizard/HrPayrollITSView.xml',
+        'wizard/hrPayrollDISAView.xml',
+        'wizard/HrCnpsMonthlyView.xml',
+        'wizard/HrPayrollReportView.xml',
+        'views/report_hr_payroll_report_view.xml',
+        'views/HrSalaryRuleView.xml',
+        "views/report_fdfp_template.xml",
+        "views/report_hr_its.xml",
+        'views/report_payroll.xml',
+        'views/report_cnps_monthly.xml',
+        "raports/payroll_raport.xml",
+    ],
+    'demo_xml': [],
+    'installable': True,
+    'active': False,
+}

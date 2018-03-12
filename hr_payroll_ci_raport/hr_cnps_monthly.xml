@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    		<record model="ir.ui.view" id="hr_payroll_cnps_monthly_tree_view">
+                <field name="name">hr.payroll.cnps.monthly.tree</field>
+                <field name="model">hr.payroll.cnps.monthly</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="CNPS Mensuel">
+                        <field name="name"/>
+                        <field name="period_start" />
+                    	<field name="period_stop" />
+                    </tree>
+                </field>
+            </record>
+    	    <record model="ir.ui.view" id="hr_payroll_cnps_monthly_form_view">
+                <field name="name">hr.payroll.cnps.monthly.form</field>
+                <field name="model">hr.payroll.cnps.monthly</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="CNPS Mensuel" version="7.0">
+                    	<header>  
+                    		<button name="print_cnps_mensuel" string="Calculer la CNPS Mensuel" type="object" class="oe_highlight"/>
+                    		
+                    	</header>
+                    	<sheet>
+                    		<h1>
+                    			<label for="name" />
+                    			<field name="name"/>
+                    		</h1>
+                    		<group>
+                    			<group>
+                    				<field name="period_start" />
+                    				<!-- <field name="categorie_contract_id" widget="selection"/> -->
+                    			</group>
+                    			<group>
+                    				<field name="period_stop" />
+                    			</group>
+                    		</group>
+                    		
+                    	</sheet>
+                    </form>
+                </field>
+            </record>
+            
+            <record model="ir.actions.act_window" id="action_hr_payroll_cnps_monthly_form_view">
+                <field name="name">Déclaration CNPS</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">hr.payroll.cnps.monthly</field>
+		   <!-- <field name="domain">[('field_name','condition',criteria)]</field>-->
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="view_id" ref="hr_payroll_cnps_monthly_form_view"/>
+                <field name="target">new</field>
+            </record>
+            
+            <!--<menuitem id="cnps_menu" name="CNPS Mensuels" parent="hr_payroll_id" sequence="2" action="action_hr_payroll_cnps_monthly_form_view"/>-->
+
+		<!-- CNPS trimestirel
+		            <record model="ir.ui.view" id="hr_payroll_cnps_trimestrial_tree_view">
+                <field name="name">CNPS Trimestriel</field>
+                <field name="model">hr.payroll.cnps.trimestrial</field>
+                <field name="type">tree</field>
+                <field name="arch" type="xml">
+                    <tree string="CNPS Trimestriel">
+                        <field name="name"/>
+                        <field name="period_start" />
+                        <field name="period_end" />r
+                    </tree>
+                </field>
+            </record>
+            
+           <record model="ir.ui.view" id="hr_payroll_cnps_trimestrial_form_view">
+                <field name="name">CNPS Trimestriel</field>
+                <field name="model">hr.payroll.cnps.trimestrial</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="CNPS Trimestriel" version="7.0">
+	                    <h1>
+	                    	<field name="name" select="1" placeholder="Designation du rapport"/>
+	                    </h1>
+                    	<group>
+                    		<group>
+                    			<field name="period_start" />
+                    		</group>
+                    		<group>
+                    			<field name="period_end" />
+                    		</group>
+                    	</group>
+                        
+                    </form>
+                </field>
+            </record>
+            
+           <record model="ir.actions.act_window" id="action_hr_payroll_cnps_trimestrial_tree_view">
+                <field name="name">hr.payroll.cnps.trimestrial</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">hr.payroll.cnps.trimestrial</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">tree,form</field>
+            </record>
+ -->
+
+    </data>
+</openerp>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	   <record model="ir.ui.view" id="hr_payroll_tree_view">
+            <field name="name">hr.payroll.tree</field>
+            <field name="model">hr.payroll</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Livre de paie">
+                    <field name="name"/>
+                    <field name="date_from" />
+                    <field name="date_to" />
+                </tree>
+            </field>
+            </record>
+            
+            
+            <record model="ir.ui.view" id="hr_payroll_form_view">
+                <field name="name">hr.payroll.form</field>
+                <field name="model">hr.payroll</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Livre  de paie">
+                    	<group colspan="4">
+                    		<group>
+                    			<field colspan="2" name="date_from"/>
+                    		</group>
+                    		<group>
+                    			<field colspan="2" name="date_to" />
+                    		</group>
+                    	</group>
+                    	<field name="line_ids" invisible="1">
+                    		<tree>
+                    			<field name="name" />
+                    			<field name="salaire_base" />
+                    			<field name="sursalaire" />
+                    			<field name="prime_imposable"/>
+                    			<field name="hs" />
+                    			<field name="avantage_nature" />
+                    			<field name="salbrut_imposable" />
+                    			<field name="its" />
+                    			<field name="cn" />
+                    			<field name="igr" />
+                    			<field name="cnps" />
+                    			<field name="total_retenues" />
+                    			<field name="avance" />
+                    			<field name="indem_non_impo" />
+                    			<field name="net_a_paye" /> 
+                    		</tree>
+                    	</field>
+                        <footer>
+                            <button name="compute_hr_payroll" string="Calculer" type="object"/>
+                    		<button name="print_payroll" string="Imprimer" type="object"/>
+                        </footer>
+                    </form>
+                </field>
+            </record>
+            
+           <record model="ir.actions.act_window" id="action_hr_payroll_tree_view">
+                <field name="name">Livre de Paie</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">hr.payroll</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="view_id" ref="hr_payroll_form_view"/>
+                <field name="target">new</field>
+            </record>
+
+            <menuitem id="payslip_book" name="Livre de paie" parent="hr_payroll_ci_raport.menu_hr_payroll_menu" action="action_hr_payroll_tree_view"/>
+
+    </data>
+</openerp>

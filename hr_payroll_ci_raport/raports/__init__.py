@@ -1,0 +1,7 @@
+import hr_payroll_disa
+import hr_cnps_monthly
+import payroll_raport
+import payroll_raport_xlsx
+import hr_payroll_report
+import hr_payroll_fdfp
+import hr_its_report

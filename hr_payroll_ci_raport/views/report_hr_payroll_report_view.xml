@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <template id="hr_payroll_etat_report">
+        <t t-call="report.html_container">
+            <t t-call="report.personal_external_layout">
+                <div class="page">
+                    <style type="text/css">
+                        #title { margin-top: 30px; margin-bottom: 30px;}
+                        #employee {width: 100%}
+                        #stagiaires {width: 70%}
+                        th { border: 0.5px solid black ;background-color: gray; font: bold 11px 'Arial'; text-align: center;}
+                        tr{ border: 0.5px solid black ;font: 10px 'Arial'; text-align: left;}
+                        #t0d5{ text-align: right; background-color: gray;}
+                        .cel{border: 0.5px solid black; font: 10px 'Arial'; text-align: left; }
+                        .amount{ text-align: right; background-color: #339CFF;}
+
+                    </style>
+                    <div class="text-center" id="title">ETAT DE SALAIRE DU MOIS DE <span t-esc="data['period']"/></div>
+                    <div class="d0">
+                        <table id="employee" class="t0">
+                            <tr>
+                                <th>Matricule</th>
+                                <th>Nom et prénoms</th>
+                                <th>Banque</th>
+                                <th>Code banque</th>
+                                <th>Code guichet</th>
+                                <th>Numéro de compte</th>
+                                <th>Clé RIB</th>
+                                <th>montant</th>
+                                <th>Observations</th>
+                            </tr>
+                            <t t-foreach="data['employees']" t-as="line">
+                                <tr t-foreach="line['liste']" t-as="employee">
+                                    <td><span t-esc="employee['matricule']"/></td>
+                                    <td><span t-esc="employee['name']"/></td>
+                                    <td><span t-esc="employee['bank']"/></td>
+                                    <td><span t-esc="employee['code_bank']"/></td>
+                                    <td><span t-esc="employee['code_guichet']"/></td>
+                                    <td><span t-esc="employee['num_account']"/></td>
+                                    <td><span t-esc="employee['rib']"/></td>
+                                    <td class="amount"><span t-esc="format_amount(employee['net'])"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7" id="t0d5">SOUS TOTAL <span t-esc="line['bank']"/></td>
+                                    <td id="t0d5" ><span t-esc="format_amount(get_total(line))"/></td>
+                                    <td class="t0d6"> - </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td colspan="7">TOTAL GENERAL</td>
+                                <td id="t0d5" ><span t-esc="format_amount(get_total_global(data))"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <div > STAGIAIRES</div>
+                        <div>
+                            <table id="stagiaires">
+                                <thead>
+                                    <tr>
+                                        <th>DESIGNATION</th>
+                                        <th>NOM ET PRENOMS</th>
+                                        <th>PRIME</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="data['stagiaires']" t-as="stagiaire">
+                                        <td class="cel"><span t-esc="stagiaire['contract']"/></td>
+                                        <td class="cel"><span t-esc="stagiaire['name']"/></td>
+                                        <td class="amount"><span t-esc="format_amount(stagiaire['net'])"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cel" colspan="2">TOTAL</td>
+                                        <td class="amount"><span t-esc="format_amount(get_total_stagiaire(data['stagiaires']))"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br/>
+                        <br/>
+                        <div class="pull-left" align="center">
+                            <p><strong>DAF</strong></p>
+                        </div>
+                        <div class="pull-right" align="center">
+                            <p><strong>LE DIRECTEUR GENERAL</strong></p>
+                        </div>
+                    </div>
+                </div>
+             </t>
+        </t>
+    </template>
+</data>
+</openerp>

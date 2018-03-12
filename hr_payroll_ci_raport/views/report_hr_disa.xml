@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="hr_payroll_ci_raport.disa_report">
+    <t t-call="report.html_container">
+        <t t-set="data_report_margin_top" t-value="5"/>
+        <t t-set="data_report_margin_left" t-value="2"/>
+        <t t-set="data_report_margin_rigth" t-value="2"/>
+        <t t-set="data_report_header_spacing" t-value="2"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+
+        <t t-foreach="docs" t-as="o">
+            <div class="page">
+
+				<table id="header_p" width="100%">
+					<tr>
+						<td id="title_part" rowspan="2"><img src="/hr_payroll_ci_raport/static/img/cnps.png" /></td>
+						<td id="title_part" align="center">ENREGISTREMENT</td>
+                        <td id="title_part" rowspan="2">Réf. : EN-GIC-11<br/>Version : 04<br/>Page : 1 / 1</td>
+					</tr>
+					<tr>
+						<td id="company" align="center">DECLARATION INDIVIDUELLE DES SALAIRES ANNUELS (D.I.S.A) </td>
+					</tr>
+				</table>
+                <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+                    .tg td{font-family:Arial, sans-serif;font-size:6px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+                    .tg .tg-0ord{text-align:right}
+                    .tg .tg-s6z2{text-align:center}
+                    .tg .tg-baqh{text-align:center;vertical-align:center; font-size:10px}
+                </style>
+                <table class="tg" width="100%">
+                    <tr>
+                        <td class="tg-s6z2" colspan="2">Raison sociale :</td>
+                        <td class="tg-s6z2" colspan="2"></td>
+                        <td class="tg-0ord" colspan="2">N° CNPS<br/>Employeur :</td>
+                        <td class="tg-s6z2" colspan="3"></td>
+                        <td class="tg-0ord">EXERCICE :</td>
+                        <td class="tg-s6z2" colspan="2"></td>
+                        <td class="tg-s6z2"></td>
+                        <td class="tg-s6z2"></td>
+                    </tr>
+                    <tr>
+                        <td class="tg-baqh" colspan="14">Ce document est à remplir très soigneusement et à retourner à la C.N.P.S avant le 31 mars de l'année qui suit l'exercice écoulé.<br/>Il devra être accompagné de la DASC dûment remplie et éventuellement d'un titre de paiement</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-s6z2">N°</td>
+                        <td class="tg-s6z2" width="15%" colspan="2">NOM ET PRENOMS</td>
+                        <td class="tg-s6z2">N° C.N.P.S</td>
+                        <td class="tg-s6z2">ANNEE <br/>DE NAISSANCE</td>
+                        <td class="tg-s6z2">DATE<br/>D’EMBAUCHE</td>
+                        <td class="tg-s6z2">DATE<br/>De DEPART</td>
+                        <td class="tg-s6z2">TYPE DE SALARIES :<br/>HORAIRES (H),<br/>JOURNALIERS (J) OU<br/>MENSUELS (M)</td>
+                        <td class="tg-s6z2">NOMBRE D’HEURES,<br/>DE JOURS OU DE<br/>MOIS TRAVAILLES<br/>(Y COMPRIS LE<br/>CONGE ANNUEL)</td>
+                        <td class="tg-s6z2">SALAIRES BRUTS ANNUELS<br/>NON PLAFONNES<br/>(Y COMPRIS TOUT AVANTAGE)</td>
+                        <td class="tg-s6z2">SALAIRES ANNUELS SOUMIS A<br/>COTISATIONS AU TITRE DE<br/>L'ASSURANCE MATERNITE, DES<br/>PRESTATIONS FAMILIALES, DES<br/>ACCIDENTS DU TRAVAIL<br/>ET MALADIES<br/>PROFESSIONNELLES</td>
+                        <td class="tg-s6z2">SALAIRES ANNUELS SOUMIS<br/>A<br/>COTISATIONS AU TITRE DU<br/>REGIME DE LA RETRAITE</td>
+                        <td class="tg-s6z2">L’ENTREPRISE<br/>COTISE POUR<br/>LE SALARIE AU<br/>TITRE DE:<br/>1=PF 2=AT<br/>3=AV 4= AM</td>
+                        <td class="tg-s6z2">OBSERVATIONS</td>
+                    </tr>
+                    <tr t-foreach="o.line_ids" t-as="p">
+						<td class="tg-s6z2"><span t-field="p.order_num"/></td>
+					    <td class="tg-s6z2" width="15%" colspan="2"><span t-field="p.name"/></td>
+					    <td class="tg-s6z2"><span t-field="p.num_cnps"/></td>
+					    <td class="tg-s6z2"><span t-field="p.year_birth"/></td>
+					    <td class="tg-s6z2"><span t-field="p.start_date"/></td>
+					    <td class="tg-s6z2"><span t-field="p.end_date"/></td>
+					    <td class="tg-s6z2"><span t-field="p.type_salary"/></td>
+						<td class="tg-s6z2"><span t-field="p.number_worked"/></td>
+						<td class="tg-s6z2"><span t-field="p.brut_annual"/></td>
+					    <td class="tg-s6z2"><span t-field="p.brut_annuel_cnps"/></td>
+                        <td class="tg-s6z2"><span t-field="p.brut_annuel_other"/></td>
+					    <td class="tg-s6z2"><span t-field="p.code_cotisation_employer"/></td>
+                        <td class="tg-s6z2"><span t-field="p.observation"/></td>
+					</tr>
+                </table>
+			</div>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>
