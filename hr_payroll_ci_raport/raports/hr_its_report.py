@@ -2,8 +2,8 @@
 
 from datetime import datetime
 import time
-from openerp import api, models, fields
-from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, format_amount
+from odoo import api, models, fields
+from odoo.addons_tools import format_amount
 
 from itertools import groupby
 
